@@ -1,1 +1,30 @@
 
+*** Settings ***
+Library     Selenium2Library    
+Resource    ../../Resources/dropdownlist.robot  
+Resource    ../../Resources/genericfunctions.robot
+Resource    ../../Resources/textfield.robot
+Variables   ../../Resources/data1.py
+Resource    ../../Resources/customerdata.robot
+
+
+*** Test Cases ***
+
+    
+CustomerAdd
+    login
+    Go To    localhost:3000/manage
+    Selenium2Library.Click Element    xpath=//*[@href="/manage/customer"]   
+    Selenium2Library.Click Element   xpath=//*[@href="/manage/customerAdd"]   
+Company Name NotNull
+    
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="email"]     30s
+    Initial data  ${customer1}
+    Selenium2Library.Wait Until Element Is Visible  xpath=//*[@id="savebtn"]    30s
+    Selenium2Library.Click Button   xpath=//*[@id="savebtn"]
+     Selenium2Library.Wait Until Element Is Visible  xpath=//*[@class="btn btn-round btn-primary"]
+   
+    Page Should Contain  Validation Error
+    Log to Console   "PASS"
+    
+    Selenium2Library.Click Button    xpath=//*[@class="btn btn-round btn-primary"]
