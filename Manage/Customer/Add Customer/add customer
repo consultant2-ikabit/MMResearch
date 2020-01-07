@@ -1,4 +1,3 @@
-
 *** Settings ***
 Library     Selenium2Library   
 Default Tags   manage_customer_module
@@ -11,7 +10,6 @@ Resource    ../../Resources/customerdata.robot
 
 *** Test Cases ***
 
-    
 CustomerAdd
     login
     Go To    localhost:3000/manage
