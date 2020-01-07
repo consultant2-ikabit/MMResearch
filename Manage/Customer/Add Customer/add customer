@@ -1,6 +1,7 @@
 
 *** Settings ***
-Library     Selenium2Library    
+Library     Selenium2Library   
+Default Tags   manage_customer_module
 Resource    ../../Resources/dropdownlist.robot  
 Resource    ../../Resources/genericfunctions.robot
 Resource    ../../Resources/textfield.robot
